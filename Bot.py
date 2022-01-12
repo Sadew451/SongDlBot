@@ -2,13 +2,16 @@ import os
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram import Client, filters
 
-SDBotz = Client("SampleBot", bot_token = BOT_TOKEN, api_id = API_ID, api_hash = API_HASH)
+SDBotz = Client("Sample Bot", bot_token = BOT_TOKEN, api_id = API_ID, api_hash = API_HASH)
 
 START_MSG = """
 HI I AM A TEST BOT"""
 
 HELP_MSG = """
 NO ONE GONE HELP YOU"""
+
+ABOUT_MSG = """
+Monai balamne"""
 
 START_BUTTON = InlineKeyboardMarkup(
     [[
@@ -50,21 +53,22 @@ async def start(client, message):
                              reply_markup=START_BUTTON,
                              disable_web_page_preview=True)
 
+
 @SDBotz.on_callback_query()
-async def cb data (bot,update);
+async def addorno(client, message):
          text=HELP_MSG
          reply_markup = HELP_BUTTON
-         await update.reply_text(
+         await message.reply_text(
              text=text,
              disable_web_page_preview=True,
              reply_markup=reply_markup
          )
     
 @SDBotz.on_callback_query()
-async def cb data (bot,update);
+async def addorno(client, message):
          text=ABOUT_MSG
          reply_markup = ABOUT_BUTTON
-         await update.reply_text(
+         await message.reply_text(
              text=text,
              disable_web_page_preview=True,
              reply_markup=reply_markup
