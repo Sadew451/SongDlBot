@@ -43,15 +43,12 @@ ABOUT_BUTTON = InlineKeyboardMarkup(
     ]]
 )
 
-@SDBotz.on_callback_query()
-async def cb data (bot,update);
-         text=START_MSG
-         reply_markup = START_BUTTON
-         await update.reply_text(
-             text=text,
-             disable_web_page_preview=True,
-             reply_markup=reply_markup
-         )
+@SDBotz.on_message(filters.command('start') & filters.private)
+async def start(client, message):    
+    await message.reply_text(START_MSG)
+    await message.reply_text(START_BUTTON,
+                             reply_markup=START_BUTTON,
+                             disable_web_page_preview=True)
 
 @SDBotz.on_callback_query()
 async def cb data (bot,update);
