@@ -2,7 +2,7 @@ import os
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram import Client, filters
 
-AWBotz = Client("SampleBot", bot_token = BOT_TOKEN, api_id = API_ID, api_hash = API_HASH)
+SDBotz = Client("SampleBot", bot_token = BOT_TOKEN, api_id = API_ID, api_hash = API_HASH)
 
 START_MSG = """
 HI I AM A TEST BOT"""
@@ -43,7 +43,7 @@ ABOUT_BUTTON = InlineKeyboardMarkup(
     ]]
 )
 
-@AWBotz.on_callback_query()
+@SDBotz.on_callback_query()
 async def cb data (bot,update);
          text=START_MSG
          reply_markup = START_BUTTON
@@ -53,7 +53,7 @@ async def cb data (bot,update);
              reply_markup=reply_markup
          )
 
-@AWBotz.on_callback_query()
+@SDBotz.on_callback_query()
 async def cb data (bot,update);
          text=HELP_MSG
          reply_markup = HELP_BUTTON
@@ -63,7 +63,7 @@ async def cb data (bot,update);
              reply_markup=reply_markup
          )
     
-@AWBotz.on_callback_query()
+@SDBotz.on_callback_query()
 async def cb data (bot,update);
          text=ABOUT_MSG
          reply_markup = ABOUT_BUTTON
@@ -73,8 +73,8 @@ async def cb data (bot,update);
              reply_markup=reply_markup
          )
 
-@AWBotz.on_message(filters.private & filters.text | filters.media)
+@SDBotz.on_message(filters.private & filters.text | filters.media)
 async def AWBotz(client, message):
     await message.copy(message.chat.id)
     
-AWBotz.run()
+SDBotz.run()
