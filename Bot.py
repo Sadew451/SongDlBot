@@ -1,10 +1,10 @@
 import os
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram import Client, filters
 
-API_ID = int(os.environ.get("API_ID"))
-API_HASH = os.environ.get("API_HASH")
-BOT_TOKEN = os.environ.get("BOT_TOKEN")
+API_ID = int(os.environ.get("4165223"))
+API_HASH = os.environ.get("972c118766f5e4a76847c1ffdb7d9a04")
+BOT_TOKEN = os.environ.get("2100965681:AAH_09Shvy-kaHyioHnPJlUa2Y5z88zUbNY")
 
 SDBotz = Client("Sample Bot", bot_token = BOT_TOKEN, api_id = API_ID, api_hash = API_HASH)
 
@@ -56,8 +56,10 @@ async def start(client, message):
     await message.reply_text(START_BUTTON,
                              reply_markup=START_BUTTON,
                              disable_web_page_preview=True)
+
+
 @SDBotz.on_callback_query()
-async def cbdata (bot,update)
+async def addorno (bot,update):
          text=HELP_MSG
          reply_markup = HELP_BUTTON
          await update.reply_text(
@@ -65,7 +67,7 @@ async def cbdata (bot,update)
              disable_web_page_preview=True,
              reply_markup=reply_markup
          )
-    
+
 @SDBotz.on_callback_query()
 async def addorno(client, message):
          text=ABOUT_MSG
