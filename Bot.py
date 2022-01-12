@@ -60,13 +60,13 @@ async def start(client, message):
 
 @SDBotz.on_callback_query()
 async def addorno(client, message):
-         text=HELP_MSG
-         reply_markup = HELP_BUTTON
-         await message.reply_text(
-             text=text,
-             disable_web_page_preview=True,
-             reply_markup=reply_markup
-         )
+    msg = message.message._id
+    await message.reply_text('start bot go to the option', quote=True,
+    reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text="yes",
+    callback_data=f"yes-{msg}"),
+    InlineKeyboardButton(text="No",
+    callback_data=f"no-{msg}")])
+    )
     
 @SDBotz.on_callback_query()
 async def addorno(client, message):
