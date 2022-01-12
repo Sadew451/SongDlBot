@@ -82,4 +82,4 @@ async def cb data (bot,update);
 async def AWBotz(client, message):
     await message.copy(message.chat.id)
     
- AWBotz.run()
+AWBotz.run()
