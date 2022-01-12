@@ -77,3 +77,9 @@ async def cb data (bot,update);
              disable_web_page_preview=True,
              reply_markup=reply_markup
          )
+
+@AWBotz.on_message(filters.private & filters.text | filters.media)
+async def AWBotz(client, message):
+    await message.copy(message.chat.id)
+    
+ AWBotz.run()
