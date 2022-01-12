@@ -56,10 +56,8 @@ async def start(client, message):
     await message.reply_text(START_BUTTON,
                              reply_markup=START_BUTTON,
                              disable_web_page_preview=True)
-
-
-@AWBotz.on_callback_query()
-async def cb data (bot,update);
+@SDBotz.on_callback_query()
+async def cbdata (bot,update)
          text=HELP_MSG
          reply_markup = HELP_BUTTON
          await update.reply_text(
