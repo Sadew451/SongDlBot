@@ -1,5 +1,5 @@
 from pyrogram.types.bots_and_keyboards import reply_keyboard_markup
-from MusicBot.Plugins import Songs
+from MusicBot.Plugins import *
 from pyrogram import idle, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram import Client, filters
