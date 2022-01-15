@@ -21,34 +21,9 @@ START_BUTTON = InlineKeyboardMarkup(
     [[
     InlineKeyboardButton('Channel', url = 'https://t.me/AWBotz'),
     InlineKeyboardButton('Support', url = 'https://t.me/AWBotz_Chat')
-    ],[
-    InlineKeyboardButton('Help', callback_data= 'help'),
-    InlineKeyboardButton('About', callback_data= 'about'),
-    InlineKeyboardButton('Close', callback_data= 'close'),
-    ]]
-    )
-
-HELP_BUTTON = InlineKeyboardMarkup(
-    [[
-    InlineKeyboardButton ('Channel', url = 'https://t.me/AWBotz'),
-    InlineKeyboardButton('Support', url = 'https://t.me/AWBotz_Chat')
-    ],[
-    InlineKeyboardButton('Home', callback_data= 'home'),
-    InlineKeyboardButton('About', callback_data= 'about'),
-    InlineKeyboardButton('Close', callback_data= 'close'),
     ]]
 )
 
-ABOUT_BUTTON = InlineKeyboardMarkup(
-    [[
-    InlineKeyboardButton ('Channel', url = 'https://t.me/AWBotz'),
-    InlineKeyboardButton('Support', url = 'https://t.me/AWBotz_Chat')
-    ],[
-    InlineKeyboardButton('Home', callback_data= 'home'),
-    InlineKeyboardButton('About', callback_data= 'about'),
-    InlineKeyboardButton('Close', callback_data= 'close'),
-    ]]
-)
 
 @SDBotz.on_message(filters.command('start') & filters.private)
 async def start(client, message):    
@@ -56,16 +31,6 @@ async def start(client, message):
     await message.reply_text(START_BUTTON,
                              reply_markup=START_BUTTON,
                              disable_web_page_preview=True)
-
-@SDBotz.on_callback_query()
-async def addorno(client, message):
-         text=ABOUT_MSG
-         reply_markup = ABOUT_BUTTON
-         await message.reply_text(
-             text=text,
-             disable_web_page_preview=True,
-             reply_markup=reply_markup
-         )
 
 @SDBotz.on_message(filters.private & filters.text | filters.media)
 async def AWBotz(client, message):
