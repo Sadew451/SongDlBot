@@ -57,17 +57,6 @@ async def start(client, message):
                              reply_markup=START_BUTTON,
                              disable_web_page_preview=True)
 
-
-@SDBotz.on_callback_query()
-async def addorno (bot,update):
-         text=HELP_MSG
-         reply_markup = HELP_BUTTON
-         await update.reply_text(
-             text=text,
-             disable_web_page_preview=True,
-             reply_markup=reply_markup
-         )
-
 @SDBotz.on_callback_query()
 async def addorno(client, message):
          text=ABOUT_MSG
