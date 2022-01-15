@@ -23,7 +23,7 @@ import aiohttp
 import requests
 import youtube_dl
 
-from MusicBot import SDBots as SDBot
+from MusicBot import SDBots as app
 from pyrogram import filters, Client
 from youtube_search import Youtubesearch
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, InputTextMessageContent
@@ -32,7 +32,7 @@ def time_to_seconds(time):
     stringt = str(time)
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
 
-@SDBot.on_message(filters.command('dsong'))
+@app.on_message(filters.command('dsong'))
 def song(client, message):
 
     user_id = message.from_user.id 
