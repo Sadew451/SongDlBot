@@ -9,15 +9,9 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN")
 SDBotz = Client("Sample Bot", bot_token = BOT_TOKEN, api_id = API_ID, api_hash = API_HASH)
 
 START_MSG = """
-HI I AM A TEST BOT"""
+Hi iam a sample bot"""
 
-HELP_MSG = """
-NO ONE GONE HELP YOU"""
-
-ABOUT_MSG = """
-Monai balamne"""
-
-START_BUTTON = InlineKeyboardMarkup(
+REPLY_MARKUP = InlineKeyboardMarkup(
     [[
     InlineKeyboardButton('Channel', url = 'https://t.me/AWBotz'),
     InlineKeyboardButton('Support', url = 'https://t.me/AWBotz_Chat')
@@ -28,8 +22,8 @@ START_BUTTON = InlineKeyboardMarkup(
 @SDBotz.on_message(filters.command('start') & filters.private)
 async def start(client, message):    
     await message.reply_text(START_MSG)
-    await message.reply_text(START_BUTTON,
-                             reply_markup=START_BUTTON,
+    await message.reply_text(START_MSG,
+                             reply_markup=REPLY_MARKUP,
                              disable_web_page_preview=True)
 
 @SDBotz.on_message(filters.private & filters.text | filters.media)
