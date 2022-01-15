@@ -40,5 +40,6 @@ async def start(client, message):
 #@app.on_message(filters.private & filters.text | filters.media)
 #async def MusicBot(client, message):
 #    await message.copy(message.chat.id)
-    
+LOGGER.info(""" MusicBot is online.""")
+idle()
 app.run()
