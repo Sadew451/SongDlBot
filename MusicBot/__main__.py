@@ -8,11 +8,11 @@ from MusicBot import LOGGER
 
 STICKER = "CAACAgUAAxkBAAECBClh4tnTjQQFEhITJUGrfZIvNGdodwACuAQAAlltyVQh83W7N5dW5yME"
 
-API_ID = int(os.environ.get("API_ID"))
-API_HASH = os.environ.get("API_HASH")
-BOT_TOKEN = os.environ.get("BOT_TOKEN")
+#API_ID = int(os.environ.get("API_ID"))
+#API_HASH = os.environ.get("API_HASH")
+#BOT_TOKEN = os.environ.get("BOT_TOKEN")
 
-SDBotz = Client("Sample Bot", bot_token = BOT_TOKEN, api_id = API_ID, api_hash = API_HASH)
+#SDBotz = Client("Sample Bot", bot_token = BOT_TOKEN, api_id = API_ID, api_hash = API_HASH)
 
 START_MSG = """
 Hi i am a sample bot this bot is making on 
