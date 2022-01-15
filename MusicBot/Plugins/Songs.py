@@ -18,9 +18,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 """
 
-import os 
-import aiohttp
+import os
 import requests
+import aiohttp
 import youtube_dl
 
 from MusicBot import SDBots as app
