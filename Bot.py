@@ -2,6 +2,8 @@ import os
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram import Client, filters
 
+STICKER = "CAACAgUAAxkBAAECBClh4tnTjQQFEhITJUGrfZIvNGdodwACuAQAAlltyVQh83W7N5dW5yME"
+
 API_ID = int(os.environ.get("API_ID"))
 API_HASH = os.environ.get("API_HASH")
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
@@ -20,7 +22,8 @@ REPLY_MARKUP = InlineKeyboardMarkup(
 
 
 @SDBotz.on_message(filters.command('start') & filters.private)
-async def start(client, message):    
+async def start(client, message):
+    await message.reply_sticker(STICKER)    
     await message.reply_text(START_MSG,
                              reply_markup=REPLY_MARKUP,
                              disable_web_page_preview=True)
