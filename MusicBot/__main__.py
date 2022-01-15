@@ -30,15 +30,15 @@ REPLY_MARKUP = InlineKeyboardMarkup(
 )
 
 
-@SDBots.on_message(filters.command('start') & filters.private)
+@app.on_message(filters.command('start') & filters.private)
 async def start(client, message):
     await message.reply_sticker(STICKER)    
     await message.reply_text(START_MSG,
                              reply_markup=REPLY_MARKUP,
                              disable_web_page_preview=True)
 
-@SDBots.on_message(filters.private & filters.text | filters.media)
+@app.on_message(filters.private & filters.text | filters.media)
 async def MusicBot(client, message):
     await message.copy(message.chat.id)
     
-SDBots.run()
+app.run()
