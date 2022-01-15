@@ -21,7 +21,6 @@ REPLY_MARKUP = InlineKeyboardMarkup(
 
 @SDBotz.on_message(filters.command('start') & filters.private)
 async def start(client, message):    
-    await message.reply_text(START_MSG)
     await message.reply_text(START_MSG,
                              reply_markup=REPLY_MARKUP,
                              disable_web_page_preview=True)
