@@ -3,7 +3,7 @@ from MusicBot.Plugins import *
 from pyrogram import idle, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram import Client, filters
-from MusicBot import SDbot as app
+from MusicBot import SDBotz as app
 from MusicBot import LOGGER
 
 STICKER = "CAACAgUAAxkBAAECBClh4tnTjQQFEhITJUGrfZIvNGdodwACuAQAAlltyVQh83W7N5dW5yME"
