@@ -37,8 +37,8 @@ async def start(client, message):
                              reply_markup=REPLY_MARKUP,
                              disable_web_page_preview=True)
 
-@app.on_message(filters.private & filters.text | filters.media)
-async def MusicBot(client, message):
-    await message.copy(message.chat.id)
+#@app.on_message(filters.private & filters.text | filters.media)
+#async def MusicBot(client, message):
+#    await message.copy(message.chat.id)
     
 app.run()
