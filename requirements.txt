@@ -1,3 +1,7 @@
 pyrogram
 TgCrypto
 python-dotenv
+tgcrypto
+wget
+youtube_dl
+youtube-search-python
