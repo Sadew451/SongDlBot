@@ -37,4 +37,5 @@ async def start(client, message):
 async def AWBotz(client, message):
     await message.copy(message.chat.id)
     
+print("""SDBot is Started...""")  
 SDBotz.run()
