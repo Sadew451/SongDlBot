@@ -2,7 +2,7 @@ import os
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram import Client, filters
 
-STICKER = "CAACAgUAAxkBAAECBClh4tnTjQQFEhITJUGrfZIvNGdodwACuAQAAlltyVQh83W7N5dW5yME"
+STICKER = "CAACAgUAAxkBAAECBpth5B5USPwi_7g5CMqnE20ypGqBqwAC4gIAAs6tMFSzLJrz52ymECME"
 
 API_ID = int(os.environ.get("API_ID"))
 API_HASH = os.environ.get("API_HASH")
