@@ -1,1 +1,1 @@
-worker: python3 -m MusicBot
+worker: python3 -m Bot.py
