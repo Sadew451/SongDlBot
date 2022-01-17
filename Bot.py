@@ -19,9 +19,9 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN")
 SDBotz = Client("Music Bot", bot_token = BOT_TOKEN, api_id = API_ID, api_hash = API_HASH)
 
 START_MSG = """
-👋 Hi i am a sample bot this bot is making on 
+👋 Hi i am a Music Downloader bot Send Music Name & Search Fast. Please Join Updates Channel Click the button.
 
-**Server**  :[Heroku](Heroku.com)
+**Server**  : [Heroku](Heroku.com)
 **Library** : [Pyrogram](https://github.com/pyrogram/pyrogram) 
 **Dev**     : [@Sadew451](https://github.com/Sadew451)
 
