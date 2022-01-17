@@ -1,6 +1,6 @@
 from distutils.command.clean import clean
 import os
-import yt-dlp
+import yt_dlp
 import asyncio
 import wget
 from youtube_dl import YoutubeDL
