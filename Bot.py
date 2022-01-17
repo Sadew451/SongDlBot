@@ -3,7 +3,7 @@ import os
 import yt_dlp
 import asyncio
 import wget
-from youtube_dl import YoutubeDL
+from yt_dlp import YoutubeDL
 from youtubesearchpython import SearchVideos
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram import Client, filters
