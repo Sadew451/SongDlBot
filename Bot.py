@@ -24,7 +24,7 @@ Hi i am a sample bot this bot is making on
 **Server** : [Heroku](Heroku.com)
 **Library** : [Pyrogram](https://github.com/pyrogram/pyrogram) 
 
-__Bot By @SDBotsz.__"""
+Bot By @SDBotsz."""
 
 REPLY_MARKUP = InlineKeyboardMarkup(
     [[
