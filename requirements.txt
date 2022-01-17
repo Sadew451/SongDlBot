@@ -5,3 +5,4 @@ tgcrypto
 wget
 yt-dlp
 youtube_dl
+youtubesearchpython
