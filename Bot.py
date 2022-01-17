@@ -10,7 +10,7 @@ from youtubesearchpython import SearchVideos
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram import Client, filters
 
-STICKER = "CAACAgUAAxkBAAECBpth5B5USPwi_7g5CMqnE20ypGqBqwAC4gIAAs6tMFSzLJrz52ymECME"
+STICKER = "CAACAgEAAxkBAAECB9lh5QEbmOmv1JhHrJadknsyRLiymAACngEAAhgfeURr35g0R44PgyME"
 
 API_ID = int(os.environ.get("API_ID"))
 API_HASH = os.environ.get("API_HASH")
@@ -19,7 +19,7 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN")
 SDBotz = Client("Sample Bot", bot_token = BOT_TOKEN, api_id = API_ID, api_hash = API_HASH)
 
 START_MSG = """
-Hi i **{message.from_user.first_name}** am a sample bot this bot is making on 
+Hi i am a sample bot this bot is making on 
 
 **Server** : [Heroku](Heroku.com)
 **Library** : [Pyrogram](https://github.com/pyrogram/pyrogram) 
