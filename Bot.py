@@ -21,8 +21,9 @@ SDBotz = Client("Music Bot", bot_token = BOT_TOKEN, api_id = API_ID, api_hash = 
 START_MSG = """
 👋 Hi i am a sample bot this bot is making on 
 
-**Server** : [Heroku](Heroku.com)
+**Server**  :[Heroku](Heroku.com)
 **Library** : [Pyrogram](https://github.com/pyrogram/pyrogram) 
+**Dev**     : [@Sadew451](https://github.com/Sadew451)
 
 Bot By @SDBotsz."""
 
