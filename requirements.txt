@@ -6,3 +6,4 @@ wget
 pytube
 yt_dlp
 youtube-search-python
+ffmpeg-python
