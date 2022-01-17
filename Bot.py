@@ -45,7 +45,7 @@ async def start(client, message):
 @SDBotz.on_message(filters.text & filters.private & ~filters.command("start"))
 async def get_songs(_, message):
     query = message.text
-    m = await message.reply_text("Searching", quote=True)
+    m = await message.reply_text("**Searching...**", quote=True)
     search = SearchVideos(f"{query}", offset=1, mode="dict", max_results=1)
     mi = search.result()
     mio = mi["search_result"]
@@ -79,7 +79,7 @@ async def get_songs(_, message):
         "logtostderr": False,
     }
     
-    await m.edit("Downloading...")
+    await m.edit("**Downloading...**")
     try:
         with YoutubeDL(opts) as ytdl:
             ytdl_data = ytdl.extract_info(lenk, download=True)
@@ -88,7 +88,7 @@ async def get_songs(_, message):
       
     cap = f"**🎧 Title:** `{title}` \n**🎥 Channel:** `{channel}` \n**⏳ Duration:** `{dur}` \n\n**Upload By @SDBotsz**"
     aud = f"{ytdl_data['id']}.mp3"
-    await m.edit("Uploading")
+    await m.edit("**Uploading...**")
     await message.reply_audio(audio=open(aud, "rb"), 
                               duration=int(ytdl_data["duration"]), 
                               title=str(ytdl_data["title"]), 
