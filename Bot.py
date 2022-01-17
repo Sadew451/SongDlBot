@@ -1,8 +1,10 @@
 from distutils.command.clean import clean
+
 import os
 import yt_dlp
 import asyncio
 import wget
+
 from yt_dlp import YoutubeDL
 from youtubesearchpython import SearchVideos
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
@@ -17,7 +19,7 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN")
 SDBotz = Client("Sample Bot", bot_token = BOT_TOKEN, api_id = API_ID, api_hash = API_HASH)
 
 START_MSG = """
-Hi {name}, i am a sample bot this bot is making on 
+Hi i am a sample bot this bot is making on 
 
 **Server** : [Heroku](Heroku.com)
 **Library** : [Pyrogram](https://github.com/pyrogram/pyrogram) 
