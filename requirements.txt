@@ -4,3 +4,4 @@ python-dotenv
 tgcrypto
 wget
 yt-dlp
+youtube_dl
