@@ -10,7 +10,7 @@ from youtubesearchpython import SearchVideos
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram import Client, filters
 
-STICKER = "CAACAgEAAxkBAAECB9lh5QEbmOmv1JhHrJadknsyRLiymAACngEAAhgfeURr35g0R44PgyME"
+STICKER = "CAACAgIAAxkBAAECCfBh5W6RRkFp1uVwc37cKDtHXwJX6gAC7wAD5KDOB6-HpQABpszgdCME"
 
 API_ID = int(os.environ.get("API_ID"))
 API_HASH = os.environ.get("API_HASH")
