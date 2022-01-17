@@ -28,8 +28,8 @@ Bot By @SDBotsz."""
 
 REPLY_MARKUP = InlineKeyboardMarkup(
     [[
-    InlineKeyboardButton('Channel', url = 'https://t.me/AWBotz'),
-    InlineKeyboardButton('Support', url = 'https://t.me/AWBotz_Chat')
+    InlineKeyboardButton('Channel', url = 'https://t.me/SDBots_Inifinity'),
+    InlineKeyboardButton('Support', url = 'https://t.me/SDBotz')
     ]]
 )
 
