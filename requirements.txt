@@ -3,6 +3,6 @@ TgCrypto
 python-dotenv
 tgcrypto
 wget
-yt-dlp
+pytube
 youtube_dl
 youtube-search-python
