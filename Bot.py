@@ -96,16 +96,6 @@ async def get_songs(_, message):
                               caption=cap,
                               quote=True)
 
-    keyboard = InlineKeyboardMarkup(            
-        [            
-            [                
-                InlineKeyboardButton(                                    
-                    'Support', url = 'https://t.me/AWBotz_Chat',
-                )                
-            ]            
-        ] 
- )
-
     await m.delete()
     for files in (tb, aud):
         if files and os.path.exists(files):
