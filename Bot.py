@@ -2,7 +2,7 @@ from distutils.command.clean import clean
 import os
 import asyncio
 import wget
-from youtube_dl import YoutubeDL
+from ytdlp import YoutubeDL
 from youtubesearchpython import SearchVideos
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram import Client, filters
