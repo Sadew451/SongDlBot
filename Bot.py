@@ -16,10 +16,10 @@ API_ID = int(os.environ.get("API_ID"))
 API_HASH = os.environ.get("API_HASH")
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
 
-SDBotz = Client("Sample Bot", bot_token = BOT_TOKEN, api_id = API_ID, api_hash = API_HASH)
+SDBotz = Client("Music Bot", bot_token = BOT_TOKEN, api_id = API_ID, api_hash = API_HASH)
 
 START_MSG = """
-Hi i am a sample bot this bot is making on 
+👋 Hi i am a sample bot this bot is making on 
 
 **Server** : [Heroku](Heroku.com)
 **Library** : [Pyrogram](https://github.com/pyrogram/pyrogram) 
@@ -28,8 +28,8 @@ Bot By @SDBotsz."""
 
 REPLY_MARKUP = InlineKeyboardMarkup(
     [[
-    InlineKeyboardButton('Channel', url = 'https://t.me/SDBots_Inifinity'),
-    InlineKeyboardButton('Support', url = 'https://t.me/SDBotz')
+    InlineKeyboardButton('📣 Channel', url = 'https://t.me/SDBots_Inifinity'),
+    InlineKeyboardButton('👥 Support', url = 'https://t.me/SDBotz')
     ]]
 )
 
