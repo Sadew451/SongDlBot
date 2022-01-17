@@ -21,7 +21,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import os
 import requests
 import aiohttp
-import youtube_dl
+import yt_dlp
 
 from MusicBot import SDBots as app
 from pyrogram import filters, Client
