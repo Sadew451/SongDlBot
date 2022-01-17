@@ -83,7 +83,7 @@ async def get_songs(_, message):
     except Exception as e:
         return await m.edit(f"**Download Failed** \n\n```{e}```")
       
-    cap = f"**🎧 Title:** {title} \n**🎥 Channel:** {channel} \n**⏳ Duration:** {dur} \n\n**📮 By @SDBotsz**"
+    cap = f"**🎧 Title:** `{title}` \n**🎥 Channel:** `{channel}` \n**⏳ Duration:** `{dur}` \n\n**Upload By @SDBotsz**"
     aud = f"{ytdl_data['id']}.mp3"
     await m.edit("Uploading")
     await message.reply_audio(audio=open(aud, "rb"), 
