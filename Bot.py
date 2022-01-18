@@ -50,8 +50,6 @@ FSUBB = InlineKeyboardMarkup(
         ]]
 )
 
-LOG_CHANNEL = "-1001589738293"
-
 @SDBotz.on_message(filters.command('start') & filters.private)
 async def start(client, message):
     try:
@@ -63,9 +61,6 @@ async def start(client, message):
         return 
     #chat id = message.from_group.id 
     chat_id = message.from_user.id
-    await SDBotz.send_message(
-                 LOG_CHANNEL,f"✅ Bot Started Successfully!\n👽New User: [{message.from_user.first_name}](tg://user?id={message.from_user.id}) \nUser Id: {message.from_user.id}\nBot username 🤖 @SDSongDlBot "
-            ) 
     await message.reply_sticker(STICKER)    
     await message.reply_text(START_MSG,
                              reply_markup=REPLY_MARKUP,
