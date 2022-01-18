@@ -9,13 +9,14 @@ import asyncio
 import traceback
 import aiofiles.os
 from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid
-
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 #re code useing pytube
 import os, pytube, requests
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram import filters
 from youtube_search import YoutubeSearch
-
+from pyrogram.errors import UserAlreadyParticipant
+from pyrogram.errors import UserNotParticipant, ChatAdminRequired, UsernameNotOccupied
 import os
 import asyncio
 from config import Config
@@ -172,10 +173,23 @@ REPLY_MARKUP = InlineKeyboardMarkup(
     InlineKeyboardButton('👥 Support', url = 'https://t.me/SDBotz')
     ]]
 )
+JOIN_ASAP = f"⛔️** Access Denied **⛔️\n\n🙋‍♂️ Hey There , You Must Join @szteambots Telegram Channel To Use This BOT. So, Please Join it & Try Again🤗. Thank You 🤝"
 
+FSUBB = InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton(text="Sz Team Bots <sz/>", url=f"https://t.me/szteambots") 
+        ]]
+    )
 
 @SDBotz.on_message(filters.command('start') & filters.private)
 async def start(client, message):
+    try:
+        await message._client.get_chat_member(int("-1001325914694"), message.from_user.id)
+    except UserNotParticipant:
+        await message.reply_text(
+        text=JOIN_ASAP, disable_web_page_preview=True, reply_markup=FSUBB
+    )
+        return 
     #chat id = message.from_group.id 
     chat_id = message.from_user.id
     if not await db.is_user_exist(chat_id):
@@ -229,12 +243,17 @@ async def song(m, message, id):
        await m.edit(f"Try again!\n\n{str(e)}")
 
 
-@SDBotz.on_message(filters.text & filters.private & ~filters.command("start"))
+@SDBotz.on_message(filters.command("song"))
 async def songdown(_, message):
-    song = message.text        
-    m = await message.reply_text("`Searching ...`")
-    id = (YoutubeSearch(song, max_results=1).to_dict())[0]["id"]
+   try: 
+    if len(message.command) < 2:
+            return await message.reply_text("Give a song name ")
+    m = await message.reply_text("🔎 Searching ...")
+    name = message.text.split(None, 1)[1]
+    id = (YoutubeSearch(name, max_results=1).to_dict())[0]["id"]
     await song(m, message, id)
+   except Exception as e:
+       await m.edit(f"try again {e}")
 
 
 
