@@ -31,10 +31,12 @@ SDBotz = Client("Music Bot", bot_token = BOT_TOKEN, api_id = API_ID, api_hash = 
 
 START_MSG = """
 👋 Hi i am a **Music Downloader bot Send Music Name & Search Fast**. Please Join Updates Channel Click the button.
+
 **Server**  : [Heroku](Heroku.com)
 **Library** : [Pyrogram](https://github.com/pyrogram/pyrogram) 
 **Dev**     : [@Sadew451](https://github.com/Sadew451)
-Bot By @SDBotsz."""
+
+__Bot By__ @SDBotsz."""
 
 REPLY_MARKUP = InlineKeyboardMarkup(
     [[
@@ -42,14 +44,14 @@ REPLY_MARKUP = InlineKeyboardMarkup(
     InlineKeyboardButton('👥 Support', url = 'https://t.me/SDBotz')
     ]]
 )
-JOIN_ASAP = f"⛔️** Access Denied **\n\n🙋‍♂️ Hey There , You Must Join @SDBots_Inifinity Telegram Channel To Use This BOT. So, Please Join it & Try Again🤗. Thank You 🤝"
+JOIN_ASAP = f"❌** Access Denied ❌**\n\n🙋‍♂️ Hey There , You Must Join @SDBots_Inifinity Telegram Channel To Use This BOT. So, Please Join it & Try Again🤗. Thank You 🤝"
 
 FSUBB = InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton(text="Bot Updates", url=f"https://t.me/SDBots_Inifinity") 
+        InlineKeyboardButton(text="👨🏻‍💻 Bot Updates", url=f"https://t.me/SDBots_Inifinity") 
         ]]
     )
-
+LOG_CHANNEL = "-1001511610738"
 @SDBotz.on_message(filters.command('start') & filters.private)
 async def start(client, message):
     try:
@@ -62,7 +64,7 @@ async def start(client, message):
     #chat id = message.from_group.id 
     chat_id = message.from_user.id
     await SDBotz.send_message(
-                Config.LOG_CHANNEL,
+                LOG_CHANNEL,
                 f"✅ Bot Started Successfully!\n👽New User: [{message.from_user.first_name}](tg://user?id={message.from_user.id}) \nUser Id: {message.from_user.id}\nBot username 🤖 @SDSongDlBot "
             ) 
     await message.reply_sticker(STICKER)    
@@ -120,6 +122,7 @@ async def song(m, message, id):
        await m.edit(f"Try again!\n\n{str(e)}")
     
 print("""
-Bot : Powerfull telegram song Bot         
+Bot : Powerfull telegram song Bot 
+
 """)    
 SDBotz.run()
