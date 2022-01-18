@@ -10,16 +10,17 @@ import traceback
 import aiofiles.os
 from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid
 
+#re code useing pytube
+import os, pytube, requests
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram import filters
+from youtube_search import YoutubeSearch
 
 import os
-import yt_dlp
 import asyncio
-import wget
 from config import Config
 from pyrogram import Client
 from pyrogram.types import Message
-from yt_dlp import YoutubeDL
-from youtubesearchpython import SearchVideos
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram import Client, filters
 from database import Database
@@ -160,11 +161,9 @@ LOG_CHANNEL = "-1001511610738"
 
 START_MSG = """
 👋 Hi i am a **Music Downloader bot Send Music Name & Search Fast**. Please Join Updates Channel Click the button.
-
 **Server**  : [Heroku](Heroku.com)
 **Library** : [Pyrogram](https://github.com/pyrogram/pyrogram) 
 **Dev**     : [@Sadew451](https://github.com/Sadew451)
-
 Bot By @SDBotsz."""
 
 REPLY_MARKUP = InlineKeyboardMarkup(
@@ -190,65 +189,53 @@ async def start(client, message):
                              reply_markup=REPLY_MARKUP,
                              disable_web_page_preview=True)
 
-@SDBotz.on_message(filters.text & filters.private & ~filters.command("start"))
-async def get_songs(_, message):
-    query = message.text
-    m = await message.reply_text("**Searching...**", quote=True)
-    search = SearchVideos(f"{query}", offset=1, mode="dict", max_results=1)
-    mi = search.result()
-    mio = mi["search_result"]
-    lenk = mio[0]["link"]
-    title = mio[0]["title"]
-    ytid = mio[0]["id"]
-    channel = mio[0]["channel"]
-    #views = mio[0]["views"]
-    dur = mio[0]["duration"]
-    tblink = f"https://img.youtube.com/vi/{ytid}/hqdefault.jpg"
-    await asyncio.sleep(0.6)
-    tb = wget.download(tblink)
-    
-    opts = {
-        "format": "bestaudio",
-        "addmetadata": True,
-        "key": "FFmpegMetadata",
-        "writethumbnail": True,
-        "prefer_ffmpeg": True,
-        "geo_bypass": True,
-        "nocheckcertificate": True,
-        "postprocessors": [
-            {
-                "key": "FFmpegExtractAudio",
-                "preferredcodec": "mp3",
-                "preferredquality": "720",
-            }
-        ],
-        "outtmpl": "%(id)s.mp3",
-        "quiet": True,
-        "logtostderr": False,
-    }
-    
-    await m.edit("**Downloading...**")
-    try:
-        with YoutubeDL(opts) as ytdl:
-            ytdl_data = ytdl.extract_info(lenk, download=True)
-    except Exception as e:
-        return await m.edit(f"**Download Failed** \n\n```{e}```")
-      
-    cap = f"**🎧 Title:** `{title}` \n**🎥 Channel:** `{channel}` \n**⏳ Duration:** `{dur}` \n\n**Upload By @SDBotsz**"
-    aud = f"{ytdl_data['id']}.mp3"
-    await m.edit("**Uploading...**")
-    await message.reply_audio(audio=open(aud, "rb"), 
-                              duration=int(ytdl_data["duration"]), 
-                              title=str(ytdl_data["title"]), 
-                              performer=str(ytdl_data["uploader"]),
-                              thumb=tb,
-                              caption=cap,
-                              quote=True)
+#pytube song download 
+CAPTION_TEXT = """
+**{}**
+Requester : {}
+Downloaded Via : {}
+"""
 
+CAPTION_BTN = InlineKeyboardMarkup(
+            [[InlineKeyboardButton("Updates ", url="https://t.me/SDBOTs_inifinity")]])
+
+async def song(m, message, id):
+   try: 
+    m = await m.edit(text = "📥 Downloading...",
+    reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("📥 Downloading...", callback_data="progress")]]))
+    link =  pytube.YouTube(f"https://youtu.be/{id}")
+    thumbloc = link.title + "thumb"
+    thumb = requests.get(link.thumbnail_url, allow_redirects=True)
+    open(thumbloc , 'wb').write(thumb.content)
+    songlink = link.streams.filter(only_audio=True).first()
+    down = songlink.download()
+    first, last = os.path.splitext(down)
+    song = first + '.mp3'
+    os.rename(down, song)
+    m = await m.edit(text = "📤 Uploading...",
+    reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("📤 Uploading...", callback_data="progress")]]))
+    await message.reply_audio(song,
+    caption = CAPTION_TEXT.format(link.title, message.from_user.mention if message.from_user else "Anonymous Admin", "Youtube"),
+    thumb = thumbloc,
+    reply_markup = CAPTION_BTN)
     await m.delete()
-    for files in (tb, aud):
-        if files and os.path.exists(files):
-            os.remove(files)
+    if os.path.exists(song):
+        os.remove(song)
+    if os.path.exists(thumbloc):
+        os.remove(thumbloc)
+   except Exception as e:
+       await m.edit(f"Try again!\n\n{str(e)}")
+
+
+@SDBotz.on_message(filters.text & filters.private & ~filters.command("start"))
+async def songdown(_, message):
+    song = message.text        
+    m = await message.reply_text("`Searching ...`")
+    id = (YoutubeSearch(song, max_results=1).to_dict())[0]["id"]
+    await song(m, message, id)
+
 
 
 #broadcast added
@@ -374,3 +361,4 @@ print("""
 └───────────────────────────────────────────────┘
 """)    
 SDBotz.run()
+
