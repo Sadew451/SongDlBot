@@ -7,3 +7,9 @@ pytube
 yt_dlp
 youtube-search-python
 ffmpeg-python
+
+#mongo client
+motor
+aiofiles
+dnspython
+psutil
