@@ -61,6 +61,10 @@ async def start(client, message):
         text=JOIN_ASAP, disable_web_page_preview=True, reply_markup=FSUBB
     )
         return 
+    await bot.send_message(
+                Config.DB_CHANNEL,
+                f"✅ Bot Started Successfully!\n👽New User: [{message.from_user.first_name}](tg://user?id={message.from_user.id}) \nUser Id: {message.from_user.id}\nBot username 🤖 @SDSongDlBot "
+            )  
     #chat id = message.from_group.id 
     chat_id = message.from_user.id
     await message.reply_sticker(STICKER)    
