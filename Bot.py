@@ -21,7 +21,7 @@ import threading
 from sqlalchemy import create_engine, Column, Numeric, TEXT
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session, sessionmaker
-from config import config
+
 
 def start() -> scoped_session:
     engine = create_engine(config.DATABASE_URL, client_encoding="utf8")
