@@ -1,9 +1,9 @@
 {
-  "name": "Sample Bot ",
+  "name": "Music Downloader Bot ",
   "description": "Unknown",
-  "repository": "https://github.com/Sadew451/SampleBot",
-  "logo": "",
-  "keywords": ["telegram", "sample bot", "sadew451","telegram bot"],
+  "repository": "https://github.com/Sadew451/SongDlBot",
+  "logo": "https://telegra.ph/file/411aba3150413fb570305.jpg",
+  "keywords": ["telegram", "Music bot", "sadew451","telegram bot"],
   "env": {
      "BOT_TOKEN": {
       "description": "Your Bot token from @Botfather",
