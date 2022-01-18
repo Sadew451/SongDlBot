@@ -13,3 +13,9 @@ motor
 aiofiles
 dnspython
 psutil
+
+#onlyneedthis
+pytube
+youtube-search
+psycopg2-binary
+requests
