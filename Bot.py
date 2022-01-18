@@ -42,11 +42,11 @@ REPLY_MARKUP = InlineKeyboardMarkup(
     InlineKeyboardButton('👥 Support', url = 'https://t.me/SDBotz')
     ]]
 )
-JOIN_ASAP = f"⛔️** Access Denied **⛔️\n\n🙋‍♂️ Hey There , You Must Join @szteambots Telegram Channel To Use This BOT. So, Please Join it & Try Again🤗. Thank You 🤝"
+JOIN_ASAP = f"⛔️** Access Denied **\n\n🙋‍♂️ Hey There , You Must Join @SDBots_Inifinity Telegram Channel To Use This BOT. So, Please Join it & Try Again🤗. Thank You 🤝"
 
 FSUBB = InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton(text="Sz Team Bots <sz/>", url=f"https://t.me/szteambots") 
+        InlineKeyboardButton(text="Bot Updates", url=f"https://t.me/SDBots_Inifinity") 
         ]]
     )
 
