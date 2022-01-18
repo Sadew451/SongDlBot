@@ -14,72 +14,6 @@ from pyrogram.types import Message
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram import Client, filters
 
-#codes from SDBotz media bot
-#credis tinuraD
-
-import threading
-from sqlalchemy import create_engine, Column, Numeric, TEXT
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import scoped_session, sessionmaker
-
-
-def start() -> scoped_session:
-    engine = create_engine(Config.DATABASE_URL, client_encoding="utf8")
-    BASE.metadata.bind = engine
-    BASE.metadata.create_all(engine)
-    return scoped_session(sessionmaker(bind=engine, autoflush=False))
-
-BASE = declarative_base()
-SESSION = start()
-INSERTION_LOCK = threading.RLock()
-
-class Users(BASE):
-    __tablename__ = "mediabot"
-    id = Column(Numeric, primary_key=True)
-    user_name = Column(TEXT)
-
-    def __init__(self, id, user_name):
-        self.id = id
-        self.user_name = user_name
-
-Users.__table__.create(checkfirst=True)
-
-def add_user(id, user_name):
-    with INSERTION_LOCK:
-        msg = SESSION.query(Users).get(id)
-        if not msg:
-            usr = Users(id, user_name)
-            SESSION.add(usr)
-            SESSION.commit()
-        else:
-            pass
-
-def remove_user(id):
-    with INSERTION_LOCK:
-        msg = SESSION.query(Users).get(id)
-        if msg:
-            SESSION.delete(msg)
-            SESSION.commit()
-        else:
-            SESSION.close()
-      
-def count_users():
-    try:
-        return SESSION.query(Users).count()
-    finally:
-        SESSION.close()
-
-def user_list():
-    try:
-        query = SESSION.query(Users.id).order_by(Users.id)
-        return query
-    finally:
-        SESSION.close()
-
-
-BOT_OWNER = "2027510494"
-
-
 
 STICKER = "CAACAgIAAxkBAAECCfBh5W6RRkFp1uVwc37cKDtHXwJX6gAC7wAD5KDOB6-HpQABpszgdCME"
 
@@ -97,12 +31,10 @@ SDBotz = Client("Music Bot", bot_token = BOT_TOKEN, api_id = API_ID, api_hash = 
 
 START_MSG = """
 👋 Hi i am a **Music Downloader bot Send Music Name & Search Fast**. Please Join Updates Channel Click the button.
-
 **Server**  : [Heroku](Heroku.com)
 **Library** : [Pyrogram](https://github.com/pyrogram/pyrogram) 
 **Dev**     : [@Sadew451](https://github.com/Sadew451)
-
-__Bot By__ @SDBotsz."""
+Bot By @SDBotsz."""
 
 REPLY_MARKUP = InlineKeyboardMarkup(
     [[
@@ -117,9 +49,7 @@ FSUBB = InlineKeyboardMarkup(
         InlineKeyboardButton(text="👨🏻‍💻 Bot Updates", url=f"https://t.me/SDBots_Inifinity") 
         ]]
     )
-
 LOG_CHANNEL = "-1001511610738"
-
 @SDBotz.on_message(filters.command('start') & filters.private)
 async def start(client, message):
     try:
@@ -188,26 +118,6 @@ async def song(m, message, id):
         os.remove(thumbloc)
    except Exception as e:
        await m.edit(f"Try again!\n\n{str(e)}")
-    
-@SDBotz.on_message(filters.command("stats") & filters.user(BOT_OWNER))
-async def botsatats(_, message):
-    users = count_users()
-    await message.reply_text(f"Total Users -  {users}")
-
-
-@SDBotz.on_message(filters.command('bcast') & filters.user(BOT_OWNER))
-async def broadcast(_, message):
-    if message.reply_to_message :
-        query = user_list()
-        for row in query:
-           try: 
-            chat_id = int(row[0])
-            reply = message.reply_to_message
-            await reply.copy(chat_id)
-           except:
-            pass
-            remove_user(chat_id)
-            await message.reply_text(f"{chat_id} blocked me, Removed from DB.")  
     
 print("""
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
