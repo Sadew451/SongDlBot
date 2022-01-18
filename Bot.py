@@ -49,7 +49,7 @@ FSUBB = InlineKeyboardMarkup(
         InlineKeyboardButton(text="👨🏻‍💻 Bot Updates", url=f"https://t.me/SDBots_Inifinity") 
         ]]
     )
-LOG_CHANNEL = "-1001475839216"
+LOG_CHANNEL = "-1001511610738"
 @SDBotz.on_message(filters.command('start') & filters.private)
 async def start(client, message):
     try:
